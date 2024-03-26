@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Hero from './Hero'
 import ListCars from './cars/ListCars';
 const carData = {
@@ -19,39 +19,9 @@ const carData = {
     },
   };
 const Home = () => {
-    const [selectedCarType, setSelectedCarType] = useState('');
-  
-    // Handle car type selection
-    const handleCarTypeChange = (event) => {
-      setSelectedCarType(event.target.value);
-    };
   return (
     <div>
         <Hero/>
-        <div className="mt-10">
-        <div>
-        <h1>Select a Car Type:</h1>
-            <select value={selectedCarType} onChange={handleCarTypeChange}>
-                <option value="">Select</option>
-                <option value="electrical">Electrical Car</option>
-                <option value="twowheels">Two Wheels Car</option>
-                <option value="sport">Sport Car</option>
-            </select>
-
-      {selectedCarType && (
-        <div>
-          <h2>{carData[selectedCarType].name}</h2>
-          <h3>Parts:</h3>
-          <ul>
-            {carData[selectedCarType].parts.map((part, index) => (
-              <li key={index}>{part}</li>
-            ))}
-          </ul>
-          <img src={carData[selectedCarType].image}/>
-        </div>
-      )}
-    </div>
-        </div>
         <ListCars carData={carData}/>
     </div>
   )
